@@ -6,7 +6,7 @@
     </x-slot>
     {{-- Because she competes with no one, no one can compete with her. --}}
     <div class="chat_container">
-        <div class="chat_list_container">
+        <div class="chat_list_container test">
             @livewire('chat.chat-list')
         </div>
         <div class="chat_box_container">
