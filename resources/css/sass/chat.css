@@ -1,3 +1,64 @@
 .test {
-  font-size: 85px;
+    font-size: 45px;
+}
+
+/*chat container*/
+.chat_container {
+    position: fixed;
+    width: 95%;
+    left: 2.5%;
+    height: 87%;
+    border: 1px solid gray;
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+/*chat list*/
+.chat_list_container {
+    border: 1px solid gray;
+    width: 25%;
+    height: 100%;
+
+}
+
+.chatlist_header {
+    border: 1px solid gray;
+    height: 60px;
+}
+
+.chatlist_body {
+
+}
+
+/*chatbox*/
+.chat_box_container {
+    width: 75%;
+    height: 100%;
+    border: 1px solid gray;
+    position: relative;
+}
+
+.chatbox_header {
+    border: 1px solid gray;
+    height: 0px;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+}
+
+.chatbox_body {
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    border: 1px solid blue;
+    overflow-y:auto ;
+}
+
+.chatbox_footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    border: 1px solid green;
+    height: 60px;
 }
