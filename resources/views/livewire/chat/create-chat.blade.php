@@ -1,9 +1,10 @@
 <div>
     {{-- If your happiness depends on money, you will never be happy with yourself. --}}
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('users') }}
-        </h2>
-    </x-slot>
-    chat
+    <ul class="list-group w-75 mx-auto mt-2 container-fluid">
+    @foreach($users as $user)
+
+            <li class="list-group-item list-group-item-action" wire:click="checkconversation({{$user->id}})">{{$user->name}}</li>
+
+    @endforeach
+    </ul>
 </div>

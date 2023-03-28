@@ -48,7 +48,13 @@ img {
     display: flex;
     flex-wrap: nowrap;
     padding: 5px 6px;
+
+
 }
+/*.chat_container @include media('>desktop'){*/
+/*    border: 3px solid red;*/
+/*}*/
+/*.chat_container @media only screen and (min->width:1024px){}*/
 
 /*chat list*/
 /*-------------------------------*/
@@ -98,7 +104,15 @@ img {
     padding: 2px 8px;
     display: flex;
     flex-wrap: nowrap;
-    width: 100%;
+    width: 97%;
+    margin: 9px 4px;
+    border-radius: 14px;
+    background-color: rgb(231,231,231);
+    cursor: pointer;
+
+}
+.chatlist_item:hover{
+background-color: darkgrey;
 }
 
 .chatlist_img_container {
@@ -154,7 +168,8 @@ img {
 .unread_count {
     margin-left: auto;
     font-size: 13px;
-    background-color: gainsboro;
+    /*background-color: gainsboro;*/
+    margin-top: 6px;
     padding: 2px 5px;
     border-radius: 50%;
     color: rgb(207, 33, 33);

@@ -4,37 +4,39 @@
             chat
         </div>
         <div class="img_container">
-            <img src="{{asset('img/index_top_1.png')}}" alt="">
+            <img src="https://ui-avatars.com/api/?background=0D8ABC&color=fff&name={{auth()->user()->name}}" alt="">
         </div>
     </div>
     <div class="chatlist_body">
-        <div class="chatlist_item">
-            <div class="chatlist_img_container">
-                <img src="{{asset('img/slider_1.jpg')}}" alt="">
-            </div>
-            <div class="chatlist_info">
-                <div class="top_row">
-                    <div class="list_username">morteza</div>
-                    <span class="date">2d</span>
-                </div>
-                <div class="bottom_row">
-                    <div class="message_body text-truncate">
-                        ipsom gdfhddhdhdhdhdhd ghhhhhhhhhhhhhhhhhh dfffffffffffffffffffff
-                        ipsomipsom ipsom
-                        ipsomddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd ipsom
-                        ipsomdddddddddddddddd ipsomdddddddddddddddddddddddddddddddddddddd
-                        ipsomdddddddddddipsom gdfhddhdhdhdhdhd ghhhhhhhhhhhhhhhhhh dfffffffffffffffffffff ipsom
-                        ipsomddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-                        ipsom ipsomdddddddddddddddd ipsomdddddddddddddddddddddddddddddddddddddd
-                        ipsomddddddddddd ipsomdddddddddddddddd
-                        ipsomdddddddddddddddddddddddddddddddddddddd
-                        ipsomddddddddddd ipsom gdfhddhdhdhdhdhd ghhhhhhhhhhhhhhhhhh dfffffffffffffffffffff
-                        ipsomddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-
+        @if(count($conversations)>0)
+            @foreach($conversations as $conversation)
+                <div class="chatlist_item"wire:key="{{$conversation->id}}" wire:click="$emit('chatUserSelected',{{$conversation}},{{$this->getChatUsersInstance($conversation,$name='id')}})">
+                    <div class="chatlist_img_container">
+                        <img src="https://ui-avatars.com/api/?name={{$this->getChatUsersInstance($conversation,$name='name')}}" alt="">
                     </div>
-                    <div class="unread_count">56</div>
+                    <div class="chatlist_info">
+                        <div class="top_row">
+                            <div class="list_username">{{$this->getChatUsersInstance($conversation,$name='name')}}</div>
+                            <span class="date"> {{$conversation->messages->last()?->created_at->diffForHumans()}}</span>
+                        </div>
+                        <div class="bottom_row">
+                            <div class="message_body text-truncate">
+                                {{$conversation->messages->last()->body}}
+                            </div>
+                            @php
+                                if(count($conversation->messages->where('read',0)->where('receiver_id',auth()->id())))
+                                    {
+                                        echo '<div class="unread_count badge rounded-pill text-light bg-danger">'
+                                        .count($conversation->messages->where('read',0)->where('receiver_id',auth()->id())).'</div>';
+                                    }
+                            @endphp
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            @endforeach
+        @else
+            no convresation
+        @endif
+
     </div>
 </div>
